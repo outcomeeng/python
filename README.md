@@ -15,9 +15,9 @@ npx skills add outcomeeng/python
 
 Install these first:
 
-- `npx skills add outcomeeng/foundation`
+- `npx skills add outcomeeng/spec-tree`
 
-  - outcomeeng/foundation (for /testing and /reviewing-tests)
+  - outcomeeng/spec-tree (for /testing and /reviewing-tests)
 ## Skills (10)
 
 | Skill | Description |
