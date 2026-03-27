@@ -18,13 +18,12 @@ Install these first:
 - `npx skills add outcomeeng/spec-tree`
 
   - outcomeeng/spec-tree (for /testing and /reviewing-tests)
-## Skills (10)
+## Skills (9)
 
 | Skill | Description |
 | ----- | ----------- |
 | `architecting-python` | writing ADRs or making Python architecture decisions |
 | `coding-python` | writing or fixing Python implementation code |
-| `implementing-python-feature` | implementing features with multiple stories or auto-implementing |
 | `implementing-python-files` | given file paths to implement or applying TDD to specific files |
 | `reviewing-python` | reviewing Python code or validating implementations |
 | `reviewing-python-architecture` | reviewing ADRs or architecture decisions |
