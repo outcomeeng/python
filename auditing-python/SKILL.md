@@ -1,8 +1,8 @@
 ---
-name: reviewing-python
+name: auditing-python
 description: >-
-  ALWAYS invoke this skill when reviewing Python code or validating implementations.
-  NEVER review code without this skill.
+  ALWAYS invoke this skill when auditing Python code or validating implementations.
+  NEVER audit code without this skill.
 allowed-tools: Read, Bash, Glob, Grep, Write, Edit
 ---
 
