@@ -2,8 +2,8 @@
 
 Python engineering skills
 
-> This repo is auto-generated from [outcomeeng/claude](https://github.com/outcomeeng/claude).
-> For the Claude Code plugin marketplace, use `claude plugin marketplace add outcomeeng/claude`.
+> This repo is auto-generated from [outcomeeng/plugins](https://github.com/outcomeeng/plugins).
+> For the shared marketplace, use `claude plugin marketplace add outcomeeng/plugins` or `codex plugin marketplace add outcomeeng/plugins`.
 
 ## Install
 

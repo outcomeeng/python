@@ -62,7 +62,7 @@ Execute phases IN ORDER. Do not skip.
 
 Run the project's validation command. Catches everything linters handle: type annotations, naming, magic numbers, bare excepts, unused imports, security rules.
 
-If the project lacks its own linter configs, use the reference configs in `${SKILL_DIR}/rules/`:
+If the project lacks its own linter configs, use the reference configs in `${CLAUDE_SKILL_DIR}/rules/`:
 
 | File                | Purpose                                         |
 | ------------------- | ----------------------------------------------- |
@@ -143,7 +143,7 @@ Evaluate import structure using the same vocabulary as `/auditing-python-tests`:
 
 For stable locations (`product_testing.*`, shared fixtures), package imports are mandatory.
 
-See `${SKILL_DIR}/references/false-positive-handling.md` for application context when evaluating security and linter suppression comments.
+See `${CLAUDE_SKILL_DIR}/references/false-positive-handling.md` for application context when evaluating security and linter suppression comments.
 
 **Phase 4: ADR/PDR Compliance**
 
@@ -152,7 +152,7 @@ Find applicable ADRs/PDRs in the spec hierarchy (`*.adr.md`, `*.pdr.md`). Verify
 | Decision Record Constraint           | Violation Example                   | Verdict  |
 | ------------------------------------ | ----------------------------------- | -------- |
 | "Use dependency injection" (ADR)     | Direct imports of external services | REJECTED |
-| "Level 1 tests for logic" (ADR)      | Unit tests hitting network          | REJECTED |
+| "`l1` tests for logic" (ADR)         | `l1` tests hitting network          | REJECTED |
 | "No ORM" (ADR)                       | SQLAlchemy models introduced        | REJECTED |
 | "Lifecycle is Draft→Published" (PDR) | Added hidden `Archived` state       | REJECTED |
 
@@ -237,7 +237,7 @@ These are real failures from past audits. Study them to avoid repeating them.
 </what_to_avoid>
 
 <example_review>
-Read `${SKILL_DIR}/references/example-review.md` for complete APPROVED and REJECTED examples showing all concern types.
+Read `${CLAUDE_SKILL_DIR}/references/example-review.md` for complete APPROVED and REJECTED examples showing all concern types.
 
 </example_review>
 
