@@ -29,7 +29,7 @@ Install these first:
 | `coding-python` | writing or fixing implementation code for Python |
 | `standardizing-python` | Python code standards enforced across all skills |
 | `standardizing-python-architecture` | Python ADR conventions enforced across architect and auditor skills |
-| `standardizing-python-testing` | Python testing standards enforced across all skills |
+| `standardizing-python-tests` | Python testing standards enforced across all skills |
 | `testing-python` | writing or fixing tests for Python |
 
 ## License
