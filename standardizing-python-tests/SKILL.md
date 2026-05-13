@@ -246,11 +246,28 @@ def with_test_env(config: Config) -> Generator[SpecTreeEnv, None, None]:
 
 **4. Fixture files**
 
-Use fixture files for real-world data the code under test would encounter: a captured JSONL from a chat session, a saved API response, a document the parser must handle. Fixture files live in `tests/fixtures/` alongside the test that uses them.
+Use fixture files for real-world data the code under test would encounter: a captured JSONL from a chat session, a saved API response, a document the parser must handle. Fixture files live in `product_testing/fixtures/` and are read from disk by path — never imported as modules. See `spx/15-test-infrastructure.pdr.md` for the cross-language rule.
 
 Strings and numbers are never valid fixtures. A string literal representing a domain value belongs in the production module or a generator, not a static file.
 
-- Use co-located `helpers.py` only when the helper serves one test directory
+**5. Test infrastructure layout**
+
+Harnesses, generators, and inert fixtures are production code. They live in the product's `product_testing/` package, never inside `tests/`:
+
+- `product_testing/harnesses/<name>.py` — modules that mediate access to external resources (databases, filesystems, subprocess pipelines).
+- `product_testing/generators/<name>.py` — factories producing valid inputs for parameterized or property-based tests.
+- `product_testing/fixtures/<name>.py` — pytest fixture body functions; exported as `@pytest.fixture`-decorated callables.
+- `product_testing/fixtures/` (data subdirectory) — inert files read from disk by path.
+
+pytest's `conftest.py` mechanism remains in use for collection — markers, hooks, plugin registration, and discovery shims. A `conftest.py` at the spx root (or per-node) exposes fixture callables to pytest by importing them by name from their `product_testing.fixtures.*` modules:
+
+```python
+# conftest.py
+from product_testing.fixtures.database import db_harness, transaction
+from product_testing.fixtures.filesystem import tmp_tree
+```
+
+Star imports (`from product_testing.fixtures import *`) are banned — they hide which fixture names enter scope, break static analysis, and trip `ruff` `F401`/`F403`. Fixture body code (the `@pytest.fixture`-decorated functions, harness initialization, mediator classes) belongs in `product_testing/`, never in `conftest.py`.
 
 </test_data_policy>
 
