@@ -25,7 +25,7 @@ Install these first:
 | `architecting-python` | writing ADRs for Python |
 | `auditing-python` | auditing code for Python or after writing code |
 | `auditing-python-architecture` | auditing ADRs for Python or after writing an ADR |
-| `auditing-python-tests` | auditing tests for Python or after writing tests |
+| `auditing-python-tests` | auditing tests for Python or after writing or editing tests |
 | `coding-python` | writing or fixing implementation code for Python |
 | `standardizing-python` | Python code standards enforced across all skills |
 | `standardizing-python-architecture` | Python ADR conventions enforced across architect and auditor skills |
