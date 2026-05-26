@@ -5,20 +5,11 @@ description: >-
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-!`cat "${CLAUDE_SKILL_DIR}/../standardizing-python/SKILL.md" || echo "standardizing-python not found — invoke python:standardizing-python manually"`
+Invoke the `python:standardizing-python` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-!`cat "${CLAUDE_SKILL_DIR}/../standardizing-python-tests/SKILL.md" || echo "standardizing-python-tests not found — invoke python:standardizing-python-tests manually"`
+Invoke the `python:standardizing-python-tests` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-!`cat "${CLAUDE_SKILL_DIR}/../../../spec-tree/skills/testing/SKILL.md" || echo "testing not found — invoke spec-tree:testing manually"`
-
-<codex_fallback>
-If the `cat` commands above appear as literal text, invoke these skills before proceeding:
-
-1. `python:standardizing-python`
-2. `python:standardizing-python-tests`
-3. `spec-tree:testing`
-
-</codex_fallback>
+Invoke the `spec-tree:testing` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
 <objective>
 Write or fix Python test files for a spec-tree node. The workflow covers new test evidence and repair of rejected test evidence.

@@ -4,29 +4,17 @@ description: Use when asked by the user to invoke the Python test audit skill
 allowed-tools: Read, Grep, Glob, Bash
 ---
 
-!`cat "${CLAUDE_SKILL_DIR}/../standardizing-python/SKILL.md" || echo "standardizing-python not found — invoke python:standardizing-python manually"`
+Invoke the `python:standardizing-python` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-!`cat "${CLAUDE_SKILL_DIR}/../standardizing-python-tests/SKILL.md" || echo "standardizing-python-tests not found — invoke python:standardizing-python-tests manually"`
+Invoke the `python:standardizing-python-tests` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-!`cat "${CLAUDE_SKILL_DIR}/../../../spec-tree/skills/testing/SKILL.md" || echo "testing not found — invoke spec-tree:testing manually"`
+Invoke the `spec-tree:testing` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-!`cat "${CLAUDE_SKILL_DIR}/../../../spec-tree/skills/auditing-tests/SKILL.md" || echo "auditing-tests not found — invoke spec-tree:auditing-tests manually"`
+Invoke the `spec-tree:auditing-tests` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
 !`test -f spx/local/python.md && cat spx/local/python.md || true`
 
 !`test -f spx/local/python-tests.md && cat spx/local/python-tests.md || true`
-
-<codex_fallback>
-If the `cat` commands above appear as literal text, invoke these skills before proceeding:
-
-1. `python:standardizing-python`
-2. `python:standardizing-python-tests`
-3. `spec-tree:testing`
-4. `spec-tree:auditing-tests`
-5. Read `spx/local/python.md` if it exists
-6. Read `spx/local/python-tests.md` if it exists
-
-</codex_fallback>
 
 <objective>
 Audit Python test evidence against the spec-tree test-audit properties plus Python-specific source ownership, testability, harness, generator, inert-fixture, and pytest discovery rules.
@@ -139,7 +127,7 @@ For each test case, name the source. REJECT against the missing source when:
 - The case's value is a runner-tuning literal at test scope — the harness that owns the resource owns the timeout, retry count, or polling interval.
 - The case's input or expected output is hand-picked by the author with no source the audit can name — REJECT, the case is a tautology regardless of where it sits lexically.
 
-When the missing source is an architectural defect (the Python module that should own the vocabulary does not yet exist), name the module that should be created and the spec-tree node that should govern it. Source shape is improvable per `spx/43-python.enabler/25-python-standards.enabler/25-python-tests.enabler/21-source-testability.enabler/source-testability.md`.
+When the missing source is an architectural defect (the Python module that should own the vocabulary does not yet exist), name the module that should be created and the spec-tree node that should govern it.
 
 Pass only when every case is traceable to a source independent of the author and every value lives in its proper home.
 </source_ownership_audit>

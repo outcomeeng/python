@@ -5,17 +5,9 @@ description: >-
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-!`cat "${CLAUDE_SKILL_DIR}/../standardizing-python/SKILL.md" || echo "standardizing-python not found — invoke python:standardizing-python manually"`
+Invoke the `python:standardizing-python` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-!`cat "${CLAUDE_SKILL_DIR}/../standardizing-python-tests/SKILL.md" || echo "standardizing-python-tests not found — invoke python:standardizing-python-tests manually"`
-
-<codex_fallback>
-If you see `cat` commands above rather than skill content, shell injection did not run (Codex or similar environment). Invoke these skills now before proceeding:
-
-1. `python:standardizing-python`
-2. `python:standardizing-python-tests`
-
-</codex_fallback>
+Invoke the `python:standardizing-python-tests` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
 <objective>
 Write or fix implementation code that makes tests pass. This skill handles both:

@@ -4,14 +4,7 @@ description: Use when asked by the user to invoke the Python code audit skill
 allowed-tools: Read, Bash, Glob, Grep
 ---
 
-!`cat "${CLAUDE_SKILL_DIR}/../standardizing-python/SKILL.md" || echo "standardizing-python not found — invoke python:standardizing-python manually"`
-
-<codex_fallback>
-If you see `cat` commands above rather than skill content, shell injection did not run (Codex or similar environment). Invoke these skills now before proceeding:
-
-1. `python:standardizing-python`
-
-</codex_fallback>
+Invoke the `python:standardizing-python` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
 <objective>
 

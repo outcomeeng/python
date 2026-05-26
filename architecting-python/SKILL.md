@@ -5,17 +5,9 @@ description: >-
 allowed-tools: Read, Write, Glob, Grep
 ---
 
-!`cat "${CLAUDE_SKILL_DIR}/../standardizing-python-architecture/SKILL.md" || echo "standardizing-python-architecture not found — invoke python:standardizing-python-architecture manually"`
+Invoke the `python:standardizing-python-architecture` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-!`cat "${CLAUDE_SKILL_DIR}/../standardizing-python-tests/SKILL.md" || echo "standardizing-python-tests not found — invoke python:standardizing-python-tests manually"`
-
-<codex_fallback>
-If you see `cat` commands above rather than skill content, shell injection did not run (Codex or similar environment). Invoke these skills now before proceeding:
-
-1. `python:standardizing-python-architecture`
-2. `python:standardizing-python-tests`
-
-</codex_fallback>
+Invoke the `python:standardizing-python-tests` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
 <accessing_skill_files>
 When this skill is invoked, Claude Code provides the base directory in the loading message:
@@ -438,27 +430,27 @@ See `/testing` for methodology and `/testing-python` for Python patterns.
 
 ### ADRs Written
 
-| ADR                                                         | Scope                | Decision Summary                        |
-| ----------------------------------------------------------- | -------------------- | --------------------------------------- |
-| [Type Safety](spx/21-type-safety.adr.md)                    | Product              | Use strict Mypy, Pydantic at boundaries |
-| [Clone Tree](spx/10-snapshots.enabler/21-clone-tree.adr.md) | 10-snapshots enabler | Clone-based snapshot traversal          |
+| ADR                                | Scope   | Decision Summary            |
+| ---------------------------------- | ------- | --------------------------- |
+| [{ADR Name}]({path to ADR})        | {scope} | {one-line decision summary} |
+| [{Second ADR Name}]({path to ADR}) | {scope} | {one-line decision summary} |
 
 ### Key Constraints for Downstream Skills
 
 1. **coding-python must**:
-   - {constraint from [Type Safety](spx/21-type-safety.adr.md)}
-   - {constraint from [Clone Tree](spx/10-snapshots.enabler/21-clone-tree.adr.md)}
+   - {constraint from [{ADR Name}]({path to ADR})}
+   - {constraint from [{Second ADR Name}]({path to ADR})}
 
 2. **auditing-python must verify**:
-   - {verification from [Type Safety](spx/21-type-safety.adr.md)}
-   - {verification from [Clone Tree](spx/10-snapshots.enabler/21-clone-tree.adr.md)}
+   - {verification from [{ADR Name}]({path to ADR})}
+   - {verification from [{Second ADR Name}]({path to ADR})}
 
 ### Abort Conditions
 
 If any of these assumptions fail, downstream skills must ABORT:
 
-1. {assumption from [Type Safety](spx/21-type-safety.adr.md)}
-2. {assumption from [Clone Tree](spx/10-snapshots.enabler/21-clone-tree.adr.md)}
+1. {assumption from [{ADR Name}]({path to ADR})}
+2. {assumption from [{Second ADR Name}]({path to ADR})}
 
 ### Ready for Implementation
 
