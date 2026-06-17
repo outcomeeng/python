@@ -1,15 +1,15 @@
 ---
-name: auditing-python-architecture
+name: audit-python-architecture
 description: >-
   ALWAYS invoke this skill when auditing ADRs for Python.
   NEVER audit a Python ADR without this skill.
 allowed-tools: Read, Grep, Glob, Bash
 ---
 
-Invoke the `python:standardizing-python-architecture` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
+Invoke the `python:python-architecture-standards` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
 <objective>
-Review ADRs against `/standardizing-python-architecture` conventions, `/testing` principles, atemporal voice rules, and applicable PDR constraints. Produce a structured verdict per concern. This skill is read-only -- it produces verdicts, not code changes.
+Review ADRs against `/python-architecture-standards` conventions, `/test` principles, atemporal voice rules, and applicable PDR constraints. Produce a structured verdict per concern. This skill is read-only -- it produces verdicts, not code changes.
 
 **Standards are pre-loaded above.** It defines the canonical ADR sections, how testability appears in Verification rules, and what does NOT belong in an ADR.
 </objective>
@@ -19,11 +19,11 @@ Review ADRs against `/standardizing-python-architecture` conventions, `/testing`
 
 When reviewing ADRs for a spec-tree work item (enabler/outcome), ensure complete architectural context is loaded:
 
-1. **Invoke `spec-tree:contextualizing`** with the node path
+1. **Invoke `spec-tree:contextualize`** with the node path
 2. **Verify all ancestor ADRs/PDRs are loaded** -- must check for consistency with decision hierarchy
 3. **Verify ADR references ancestor decisions** -- node ADRs should reference relevant ancestor ADRs/PDRs
 
-**The `spec-tree:contextualizing` skill provides:**
+**The `spec-tree:contextualize` skill provides:**
 
 - Complete ADR/PDR hierarchy (product and ancestor decisions at all levels)
 - TRD with technical requirements
@@ -44,7 +44,7 @@ When reviewing ADRs for a spec-tree work item (enabler/outcome), ensure complete
 <process>
 
 1. **Standards are pre-loaded above.** Read repo-local `spx/local/python-architecture.md` if present; an overlay routes skill behavior to the product's governing specs and decisions and supplements skill behavior without declaring product truth.
-2. **Read `/testing`** for methodology (5 stages, 5 factors, 7 exceptions)
+2. **Read `/test`** for methodology (5 stages, 5 factors, 7 exceptions)
 3. **Verify an ADR exists.** If the module makes architectural decisions (module layout, library choice, DI patterns) without an ADR, the absence is the violation — REJECT immediately. Do not treat missing ADRs as N/A.
 4. **Read the ADR** completely
 5. **Check section structure** -- only authoritative sections allowed (title + decision stated directly, Rationale, Invariants, Verification). Flag phantom sections (Purpose, Context, Trade-offs, Testing Strategy, Status, etc.)
@@ -52,7 +52,7 @@ When reviewing ADRs for a spec-tree work item (enabler/outcome), ensure complete
 7. **Check `## Verification`** -- must include testability constraints as ALWAYS/NEVER rules under `### Audit`; must NOT include level assignment tables
 8. **Check for mocking language** -- reject unittest.mock.patch, respx.mock, "mock at boundary" in any section
 9. **Verify level accuracy** -- SaaS services jump `l1` to `l3` (no `l2`)
-10. **Check test double usage** -- must document which `/testing` exception case applies
+10. **Check test double usage** -- must document which `/test` exception case applies
 11. **Identify all violations** and classify per concern
 12. **Output structured verdict** -- APPROVED or REJECTED with per-concern table
 
@@ -78,34 +78,34 @@ These are real failures from past audits. Study them to avoid repeating them.
 
 <principles_to_enforce>
 
-All canonical conventions are in `/standardizing-python-architecture`. Read it first. The audit checks these specific concerns:
+All canonical conventions are in `/python-architecture-standards`. Read it first. The audit checks these specific concerns:
 
-**1. Section structure** -- Only authoritative sections from the ADR template. See `<adr_sections>` in `/standardizing-python-architecture` for the complete list. Flag any section not in that list.
+**1. Section structure** -- Only authoritative sections from the ADR template. See `<adr_sections>` in `/python-architecture-standards` for the complete list. Flag any section not in that list.
 
-**2. Testability in Verification** -- The `## Verification` section must include ALWAYS/NEVER rules under `### Audit` that enable appropriate testing. See `<testability_in_verification>` in `/standardizing-python-architecture` for the correct pattern. Level assignment tables and Testing Strategy sections are violations.
+**2. Testability in Verification** -- The `## Verification` section must include ALWAYS/NEVER rules under `### Audit` that enable appropriate testing. See `<testability_in_verification>` in `/python-architecture-standards` for the correct pattern. Level assignment tables and Testing Strategy sections are violations.
 
-**3. Atemporal voice** -- ADRs state architectural truth in ALL sections. See `<atemporal_voice>` in `/standardizing-python-architecture` for temporal patterns to reject and rewrite examples.
+**3. Atemporal voice** -- ADRs state architectural truth in ALL sections. See `<atemporal_voice>` in `/python-architecture-standards` for temporal patterns to reject and rewrite examples.
 
-**4. Mocking prohibition** -- No mocking language anywhere in the ADR. See `<di_patterns>` in `/standardizing-python-architecture` for what to check and correct ADR language.
+**4. Mocking prohibition** -- No mocking language anywhere in the ADR. See `<di_patterns>` in `/python-architecture-standards` for what to check and correct ADR language.
 
-**5. Level accuracy** -- When the `## Verification` rules reference testing levels, verify against `/testing` definitions. See `<level_context>` in `/standardizing-python-architecture`. Key rule: SaaS services (Trakt, GitHub API, Stripe, Auth0) jump `l1` to `l3` (no `l2`).
+**5. Level accuracy** -- When the `## Verification` rules reference testing levels, verify against `/test` definitions. See `<level_context>` in `/python-architecture-standards`. Key rule: SaaS services (Trakt, GitHub API, Stripe, Auth0) jump `l1` to `l3` (no `l2`).
 
-**6. Anti-patterns** -- Check for content that does not belong in an ADR. See `<anti_patterns>` in `/standardizing-python-architecture` for the full table. Note Python-specific anti-pattern: `src.*` import examples should use `product.*` / `product_testing.*`.
+**6. Anti-patterns** -- Check for content that does not belong in an ADR. See `<anti_patterns>` in `/python-architecture-standards` for the full table. Note Python-specific anti-pattern: `src.*` import examples should use `product.*` / `product_testing.*`.
 
-**7. Test double exception cases** -- Any test double usage must document which of the 7 `/testing` Stage 5 exceptions applies. No exception = no doubles.
+**7. Test double exception cases** -- Any test double usage must document which of the 7 `/test` Stage 5 exceptions applies. No exception = no doubles.
 
 </principles_to_enforce>
 
 <output_format>
 
-Emit the verdict as JSON conforming to the canonical schema in `plugins/spec-tree/skills/auditing/scripts/verdict.py`. The skill's entire output is the JSON verdict. The caller captures the JSON and routes it through `emit_verdict.py` with the requested `--format` (defaulting to `markdown+json` for PR-comment delivery).
+Emit the verdict as JSON conforming to the canonical schema in `plugins/spec-tree/skills/audit/scripts/verdict.py`. The skill's entire output is the JSON verdict. The caller captures the JSON and routes it through `emit_verdict.py` with the requested `--format` (defaulting to `markdown+json` for PR-comment delivery).
 
 The skill's `overall` is `PASS` iff every concern row is `PASS` or `UNKNOWN` (N/A maps to `UNKNOWN`); `FAIL` if any concern is `FAIL`. Findings carry severity `REJECT` for blocking violations.
 
 ```json
 {
   "schema_version": 1,
-  "skill": "auditing-python-architecture",
+  "skill": "audit-python-architecture",
   "target": "<adr-path>",
   "overall": "PASS | FAIL | UNKNOWN",
   "rows": [
@@ -136,9 +136,9 @@ Each finding's `rule` carries the violation pattern (e.g., `phantom-section`, `t
 
 **Do:**
 
-- Reference `/standardizing-python-architecture` section names (e.g., `<testability_in_verification>`, `<atemporal_voice>`)
-- Reference `/testing` section names for level rules (e.g., "Stage 2 Five Factors", "Cardinal Rule")
-- Reference `/standardizing-python-tests` for Python-specific Protocol patterns
+- Reference `/python-architecture-standards` section names (e.g., `<testability_in_verification>`, `<atemporal_voice>`)
+- Reference `/test` section names for level rules (e.g., "Stage 2 Five Factors", "Cardinal Rule")
+- Reference `/python-test-standards` for Python-specific Protocol patterns
 - Show correct architecture with code examples
 - Be direct about violations
 - Reject temporal language in ANY section -- the decision statement, Rationale, Verification
@@ -153,7 +153,7 @@ Read `${CLAUDE_SKILL_DIR}/references/example-audit.md` for a complete REJECTED r
 <success_criteria>
 Review is complete when:
 
-- [ ] Read `/standardizing-python-architecture` before starting review
+- [ ] Read `/python-architecture-standards` before starting review
 - [ ] Checked section structure against authoritative ADR template
 - [ ] Checked ALL sections for temporal language -- the decision statement, Rationale, Verification
 - [ ] Verified `## Verification` includes testability constraints (ALWAYS/NEVER for DI, no mocking)

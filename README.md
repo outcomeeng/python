@@ -22,15 +22,15 @@ Install these first:
 
 | Skill | Description |
 | ----- | ----------- |
-| `architecting-python` | writing ADRs for Python |
-| `auditing-python` | auditing, reviewing, or evaluating Python implementation code for design flaws and ADR compliance |
-| `auditing-python-architecture` | auditing ADRs for Python |
-| `auditing-python-tests` | auditing Python test evidence, reviewing Python tests for spec-tree evidence quality, or evaluating Python test infrastructure |
-| `coding-python` | writing or fixing implementation code for Python |
-| `standardizing-python` | Python code standards enforced across all skills |
-| `standardizing-python-architecture` | Python ADR conventions enforced across architect and auditor skills |
-| `standardizing-python-tests` | Python testing standards enforced across all skills |
-| `testing-python` | writing or fixing tests for Python |
+| `architect-python` | writing ADRs for Python |
+| `audit-python` | auditing, reviewing, or evaluating Python implementation code for design flaws and ADR compliance |
+| `audit-python-architecture` | auditing ADRs for Python |
+| `audit-python-tests` | auditing Python test evidence, reviewing Python tests for spec-tree evidence quality, or evaluating Python test infrastructure |
+| `code-python` | writing or fixing implementation code for Python |
+| `python-architecture-standards` | Python ADR conventions enforced across architect and auditor skills |
+| `python-standards` | Python code standards enforced across all skills |
+| `python-test-standards` | Python testing standards enforced across all skills |
+| `test-python` | writing or fixing tests for Python |
 
 ## License
 

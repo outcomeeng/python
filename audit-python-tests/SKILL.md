@@ -1,18 +1,18 @@
 ---
-name: auditing-python-tests
+name: audit-python-tests
 description: >-
   ALWAYS invoke this skill when auditing Python test evidence, reviewing Python tests for spec-tree evidence quality, or evaluating Python test infrastructure.
   NEVER audit Python test evidence without this skill.
 allowed-tools: Read, Grep, Glob, Bash
 ---
 
-Invoke the `python:standardizing-python` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
+Invoke the `python:python-standards` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-Invoke the `python:standardizing-python-tests` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
+Invoke the `python:python-test-standards` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-Invoke the `spec-tree:testing` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
+Invoke the `spec-tree:test` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-Invoke the `spec-tree:auditing-tests` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
+Invoke the `spec-tree:audit-tests` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
 !`test -f spx/local/python.md && cat spx/local/python.md || true`
 
@@ -83,7 +83,7 @@ Reject replacement of the behavior under test:
 - `monkeypatch` replacing the behavior under test
 - `sys.path` or `importlib` tricks that cause tests to import alternate modules
 
-Accept explicit test doubles only when they are passed through dependency injection and map to a `/testing` Stage 5 exception:
+Accept explicit test doubles only when they are passed through dependency injection and map to a `/test` Stage 5 exception:
 
 | Exception             | Python pattern                             |
 | --------------------- | ------------------------------------------ |
@@ -205,7 +205,7 @@ Do not recommend `tests/helpers`, `tests/support`, node-local helper modules, or
 </architectural_dry_audit>
 
 <verdict_format>
-Follow `<verdict_format>` in `/auditing-tests`.
+Follow `<verdict_format>` in `/audit-tests`.
 
 For each finding, include:
 

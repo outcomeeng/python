@@ -1,16 +1,16 @@
 ---
-name: testing-python
+name: test-python
 description: >-
   ALWAYS invoke this skill when writing or fixing tests for Python.
   NEVER write or fix Python tests without this skill.
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-Invoke the `python:standardizing-python` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
+Invoke the `python:python-standards` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-Invoke the `python:standardizing-python-tests` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
+Invoke the `python:python-test-standards` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-Invoke the `spec-tree:testing` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
+Invoke the `spec-tree:test` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
 <objective>
 Write or fix Python test files for a spec-tree node. The workflow covers new test evidence and repair of rejected test evidence.
@@ -21,11 +21,11 @@ This skill writes tests only after the source contract is testable. When the exi
 <mode_detection>
 Determine the mode before editing:
 
-| Mode  | Signal                                                     | Action                       |
-| ----- | ---------------------------------------------------------- | ---------------------------- |
-| Write | The node has no Python evidence file for the assertion     | Follow `<write_workflow>`    |
-| Fix   | `/auditing-python-tests` rejected existing Python evidence | Follow `<fix_workflow>`      |
-| Split | The test requires source architecture changes first        | Change source contract first |
+| Mode  | Signal                                                  | Action                       |
+| ----- | ------------------------------------------------------- | ---------------------------- |
+| Write | The node has no Python evidence file for the assertion  | Follow `<write_workflow>`    |
+| Fix   | `/audit-python-tests` rejected existing Python evidence | Follow `<fix_workflow>`      |
+| Split | The test requires source architecture changes first     | Change source contract first |
 
 NEVER create a test workaround for code that lacks source-owned contracts, typed dependency boundaries, or observable behavior.
 </mode_detection>
@@ -34,7 +34,7 @@ NEVER create a test workaround for code that lacks source-owned contracts, typed
 Run this workflow for new Python tests:
 
 1. Read the target node spec and applicable decisions through the spec-tree context already loaded for the work.
-2. For each assertion, use `/testing` to select the assertion type, execution level, and any Stage 5 exception.
+2. For each assertion, use `/test` to select the assertion type, execution level, and any Stage 5 exception.
 3. Inspect the code under test and identify the production contract the test will exercise.
 4. If the production contract does not expose the needed value, registry, constructor, schema, pure function, protocol, or collaborator boundary, update the code under test before writing the test.
 5. Choose the canonical test filename: `test_<subject>.<evidence>.<level>[.<runner>].py`.

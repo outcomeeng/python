@@ -1,14 +1,14 @@
 ---
-name: coding-python
+name: code-python
 description: >-
   ALWAYS invoke this skill when writing or fixing implementation code for Python.
   NEVER write or fix Python implementation without this skill.
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-Invoke the `python:standardizing-python` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
+Invoke the `python:python-standards` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
-Invoke the `python:standardizing-python-tests` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
+Invoke the `python:python-test-standards` skill before proceeding. If that skill is unavailable, report the missing skill and continue with the closest available workflow.
 
 <repo_local_overlay>
 **Standards are pre-loaded above.** After loading, check for `spx/local/python.md` and `spx/local/python-tests.md` at the repository root. Read each file that exists and apply each as repo-local routing to the product's governing specs and decisions. A local overlay supplements skill behavior; it does not declare product truth.
@@ -30,7 +30,7 @@ Write or fix implementation code that makes tests pass. Two modes:
    - Action: Write implementation to make tests pass
 
 2. **FIX mode** - Implementation exists but was rejected by reviewer
-   - Check: Recent `/auditing-python` output shows REJECT with specific issues
+   - Check: Recent `/audit-python` output shows REJECT with specific issues
    - Action: Read the rejection, fix the specific issues, re-run verification
 
 **Always check which mode before proceeding.**
@@ -40,9 +40,9 @@ Write or fix implementation code that makes tests pass. Two modes:
 
 Before invoking this skill:
 
-1. **Tests must exist** - Written by `/testing-python`
-2. **Tests must be reviewed** - Approved by `/auditing-python-tests`
-3. **Spec must be loaded** - Context from `/spec-tree:contextualizing`
+1. **Tests must exist** - Written by `/test-python`
+2. **Tests must be reviewed** - Approved by `/audit-python-tests`
+3. **Spec must be loaded** - Context from `/spec-tree:contextualize`
 4. **Standards are pre-loaded above**
 
 If tests don't exist or aren't approved, go back to earlier steps.
@@ -70,7 +70,7 @@ Understand:
 
 **Step 2 — Write implementation (GREEN).** Write minimal code that makes tests pass.
 
-**Code standards (per `/standardizing-python`):**
+**Code standards (per `/python-standards`):**
 
 ```python
 # ✅ Type annotations on ALL functions
@@ -121,7 +121,7 @@ All must pass before declaring complete.
 
 <fix_mode_workflow>
 
-**Step 1 — Read rejection feedback.** Find the most recent `/auditing-python` output. Look for:
+**Step 1 — Read rejection feedback.** Find the most recent `/audit-python` output. Look for:
 
 - Specific file:line locations
 - Issue categories (magic values, missing DI, etc.)

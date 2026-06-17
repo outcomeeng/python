@@ -26,7 +26,7 @@ This is a complete example of a REJECTED review showing all concern types.
 
 **Where:** `## Verification`, "`l2` for Trakt list operations"
 **Concern:** Level accuracy
-**Why this fails:** Trakt.tv is a SaaS service that cannot run locally. Per `/testing` Five Factors: SaaS services have no `l2` -- jump from `l1` to `l3`.
+**Why this fails:** Trakt.tv is a SaaS service that cannot run locally. Per `/test` Five Factors: SaaS services have no `l2` -- jump from `l1` to `l3`.
 
 **Correct approach:**
 
@@ -86,7 +86,7 @@ SaaS API (Trakt.tv) transport, which cannot run locally.
 
 1. Remove all `l2` assignments for SaaS operations
 2. Remove "Mock at boundary" language
-3. Add DI Protocol definitions under `## Verification`'s `### Audit` per `/standardizing-python-architecture`
+3. Add DI Protocol definitions under `## Verification`'s `### Audit` per `/python-architecture-standards`
 4. Document which exception case justifies any test doubles
 5. Rewrite the decision statement in atemporal voice -- remove all references to current code state
 
@@ -94,12 +94,12 @@ SaaS API (Trakt.tv) transport, which cannot run locally.
 
 ## References
 
-- /standardizing-python-architecture: `<adr_sections>` (authoritative sections)
-- /standardizing-python-architecture: `<testability_in_verification>` (ALWAYS/NEVER pattern)
-- /standardizing-python-architecture: `<atemporal_voice>` (temporal patterns)
-- /standardizing-python-architecture: `<di_patterns>` (mocking prohibition)
-- /testing: Stage 2 Factor 2 (SaaS services jump `l1` to `l3`)
-- /testing: Cardinal Rule (no mocking)
+- /python-architecture-standards: `<adr_sections>` (authoritative sections)
+- /python-architecture-standards: `<testability_in_verification>` (ALWAYS/NEVER pattern)
+- /python-architecture-standards: `<atemporal_voice>` (temporal patterns)
+- /python-architecture-standards: `<di_patterns>` (mocking prohibition)
+- /test: Stage 2 Factor 2 (SaaS services jump `l1` to `l3`)
+- /test: Cardinal Rule (no mocking)
 
 ---
 

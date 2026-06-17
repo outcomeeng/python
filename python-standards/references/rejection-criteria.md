@@ -1,6 +1,6 @@
 # Python Rejection Criteria Summary
 
-Recap of the standards stated normatively in `standardizing-python/SKILL.md`, indexed by the ruff rule code (or `manual` / `review` / `mypy`) that enforces each. The SKILL.md body is authoritative; this table is a lookup.
+Recap of the standards stated normatively in `python-standards/SKILL.md`, indexed by the ruff rule code (or `manual` / `review` / `mypy`) that enforces each. The SKILL.md body is authoritative; this table is a lookup.
 
 | Issue                             | Example                           | Rule    |
 | --------------------------------- | --------------------------------- | ------- |

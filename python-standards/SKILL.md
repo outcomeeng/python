@@ -1,5 +1,5 @@
 ---
-name: standardizing-python
+name: python-standards
 user-invocable: false
 description: >-
   Python code standards enforced across all skills. Loaded by other skills, not invoked directly.
@@ -7,7 +7,7 @@ allowed-tools: Read
 ---
 
 <objective>
-Python code standards enforced by linters (ruff, mypy) and manual review. Defines what `/coding-python` must follow and `/auditing-python` enforces.
+Python code standards enforced by linters (ruff, mypy) and manual review. Defines what `/code-python` must follow and `/audit-python` enforces.
 </objective>
 
 <success_criteria>
@@ -15,7 +15,7 @@ Code follows these standards when all ruff rules and mypy checks pass. See `${CL
 </success_criteria>
 
 <reference_note>
-This is a reference skill. Other Python skills load these standards. Do not invoke it directly — invoke `/coding-python`, `/testing-python`, or `/auditing-python` instead.
+This is a reference skill. Other Python skills load these standards. Do not invoke it directly — invoke `/code-python`, `/test-python`, or `/audit-python` instead.
 
 These standards apply to ALL Python code: production and test code alike.
 </reference_note>
@@ -357,7 +357,7 @@ data = pickle.loads(untrusted_bytes)
 requests.get(url, verify=False)
 ```
 
-Context matters for security rules — a CLI tool invoked by the user has different trust boundaries than a web service. See `/auditing-python` for false positive handling.
+Context matters for security rules — a CLI tool invoked by the user has different trust boundaries than a web service. See `/audit-python` for false positive handling.
 
 **Ruff rules enforced:**
 

@@ -1,5 +1,5 @@
 ---
-name: standardizing-python-tests
+name: python-test-standards
 user-invocable: false
 description: >-
   Python testing standards enforced across all skills. Loaded by other skills, not invoked directly.
@@ -7,9 +7,9 @@ allowed-tools: Read
 ---
 
 <objective>
-Define Python-specific test standards loaded by `/testing-python`, `/coding-python`, `/architecting-python`, and `/auditing-python-tests`.
+Define Python-specific test standards loaded by `/test-python`, `/code-python`, `/architect-python`, and `/audit-python-tests`.
 
-Read `/testing` first when deciding what evidence to create. Read `/standardizing-python` before this reference when writing or reviewing Python test code. These standards implement the product's `test-infrastructure` PDR and Python test standards.
+Read `/test` first when deciding what evidence to create. Read `/python-standards` before this reference when writing or reviewing Python test code. These standards implement the product's `test-infrastructure` PDR and Python test standards.
 </objective>
 
 <repo_local_overlay>
@@ -205,7 +205,7 @@ Forbidden replacement patterns:
 - `mocker.patch(...)` replacing the dependency under test
 - `monkeypatch` replacing the behavior under test
 
-Allowed doubles are explicit objects or classes passed through dependency injection and mapped to a `/testing` Stage 5 exception.
+Allowed doubles are explicit objects or classes passed through dependency injection and mapped to a `/test` Stage 5 exception.
 </dependency_injection>
 
 <property_based_testing>
@@ -227,7 +227,7 @@ An assertion that a field, parser, or constructor rejects values outside a predi
 - Open or infinite invalid space — arbitrary strings, identifiers, timestamps, keys, generated names — is a `property` claim. The evidence is a Hypothesis strategy generating values outside the valid predicate (for example `st.text().filter(lambda s: not s.isidentifier())`), asserting rejection across the generated domain.
 - Closed, source-owned invalid set — enum variants, a defined protocol set, registry members — is a `mapping` claim. The evidence parameterizes over every source-owned invalid member, imported from the owning module, never hand-copied.
 
-A `property`-floor rejection rule is not satisfied by a finite parametrize over a hand-picked subset of an open space. Mode selection is `/testing`'s authority (see the boundary-validation router in `/testing`'s methodology); this standard teaches only the Python expression of that router's output.
+A `property`-floor rejection rule is not satisfied by a finite parametrize over a hand-picked subset of an open space. Mode selection is `/test`'s authority (see the boundary-validation router in `/test`'s methodology); this standard teaches only the Python expression of that router's output.
 </boundary_validation>
 
 <anti_patterns>
@@ -258,7 +258,7 @@ Do not require `spx validation literal` for Python tests. The literal validator 
 <success_criteria>
 Python test guidance follows this standard when:
 
-- `/testing` determines the assertion type, execution level, and exception path before implementation
+- `/test` determines the assertion type, execution level, and exception path before implementation
 - Test filenames use `test_<subject>.<evidence>.<level>[.<runner>].py`
 - Source architecture is improved before tests accept copied values, replacement mocks, or fixture laundering
 - Every test case has a documentable source outside the author's head — spec assertion text, source-owned enumeration, generator over a domain, external oracle, decision record, or inert fixture file
