@@ -23,9 +23,9 @@ Install these first:
 | Skill | Description |
 | ----- | ----------- |
 | `architect-python` | writing ADRs for Python |
-| `audit-python` | Python implementation-code audit methodology — design flaws and ADR compliance — composed by a generic auditor agent for the Python files in scope |
-| `audit-python-architecture` | Python-specific ADR architecture audit — dependency injection, no-mocking, level accuracy — composed by the generic adr-auditor agent for the Python concerns in scope |
-| `audit-python-tests` | Python test-evidence audit methodology composed by a dispatched auditor agent for the Python tests in scope |
+| `audit-python-architecture` | Python-specific architecture audit — dependency injection, no-mocking, level accuracy — composed by generic artifact-type auditors for the Python concerns in scope |
+| `audit-python-code` | Python implementation-code audit methodology — design flaws and ADR compliance — composed by implementation-auditor for the Python code files in scope |
+| `audit-python-tests` | Python test-evidence audit methodology composed by a dispatched test-evidence-auditor or implementation-auditor for the Python tests in scope |
 | `code-python` | writing or fixing implementation code for Python |
 | `python-architecture-standards` | Python ADR conventions enforced across architect and auditor skills |
 | `python-standards` | Python code standards enforced across all skills |
