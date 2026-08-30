@@ -28,7 +28,7 @@ Install these first:
 | `audit-python-tests` | Python test-evidence audit methodology — judges the Python tests in scope against the spec-tree and Python-specific evidence properties |
 | `code-python` | writing or fixing implementation code for Python |
 | `python-architecture-standards` | Python ADR conventions enforced across architect and auditor skills |
-| `python-plugin` | ALWAYS invoke this skill to operate the python plugin's own lifecycle in a checkout — report its version, manage whatever checkout footprint this plugin owns on the running agent, and check that footprint |
+| `python-plugin` | ALWAYS invoke this skill to operate the python plugin's own lifecycle — report its version and check or reconcile its agent-delivery footprint |
 | `python-standards` | Python code standards enforced across all skills |
 | `python-test-standards` | Python testing standards enforced across all skills |
 | `test-python` | writing or fixing tests for Python |
