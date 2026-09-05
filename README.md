@@ -30,7 +30,7 @@ Install these first:
 | `python-architecture-standards` | Python ADR conventions enforced across architect and auditor skills |
 | `python-plugin` | ALWAYS invoke this skill to operate the python plugin's own lifecycle — report its version and check or reconcile its agent-delivery footprint |
 | `python-standards` | Python code standards enforced across all skills |
-| `python-test-standards` | Python testing standards enforced across all skills |
+| `python-test-standards` | Python test standards enforced across all skills |
 | `test-python` | writing or fixing tests for Python |
 
 ## License
