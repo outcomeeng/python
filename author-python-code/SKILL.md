@@ -1,12 +1,12 @@
 ---
-name: code-python
+name: author-python-code
 description: >-
   ALWAYS invoke this skill when writing or fixing implementation code for Python.
   NEVER write or fix Python implementation without this skill.
 allowed-tools: Read, Write, Edit, Glob, Grep, Skill, Bash(python3 -m pytest:*), Bash(python3 -m mypy:*), Bash(python3 -m ruff:*)
 ---
 
-Use skill `python:python-standards`.
+Use skill `python:python-code-standards`.
 
 Use skill `python:python-test-standards`.
 
@@ -36,7 +36,7 @@ Python implementation code that satisfies its node's established evidence and pa
 
 Before invoking this skill:
 
-1. **Evidence must exist** - Established through `/verify`; when test is selected, expressed through `/test` and `/test-python`
+1. **Evidence must exist** - Established through `/verify`; when test is selected, expressed through `/test` and `/author-python-test`
 2. **Evidence must be reviewed** - Approved by the auditor matching each selected evidence type
 3. **Spec must be loaded** - Context from `/spec-tree:contextualize`
 4. **Standards are pre-loaded above**
@@ -86,7 +86,7 @@ Identify the behavior each selected evidence artifact establishes, the expected 
 
 **Step 2 — Write implementation.** Write minimal code that satisfies the governed behavior and every selected evidence requirement.
 
-**Code standards (per `/python-standards`):**
+**Code standards (per `/python-code-standards`):**
 
 ```python
 # ✅ Type annotations on ALL functions
@@ -264,7 +264,7 @@ def get_user(user_id: int) -> User | None:
 - Types: ✓ Pass
 - Lint: ✓ Pass
 - Python standards audit: required
-- Standards: `/python-standards`; overlays: `<loaded spx/local/python*.md paths or none>`
+- Standards: `/python-code-standards`; overlays: `<loaded spx/local/python*.md paths or none>`
 
 Ready for review.
 ```
@@ -285,7 +285,7 @@ Ready for review.
 All checks pass. Ready for re-review.
 
 - Python standards audit: required
-- Standards: `/python-standards`; overlays: `<loaded spx/local/python*.md paths or none>`
+- Standards: `/python-code-standards`; overlays: `<loaded spx/local/python*.md paths or none>`
 ```
 
 </output_format>
@@ -310,7 +310,7 @@ How to avoid: apply `<audit_requirement_handoff>`, re-read each routed `([audit]
 
 **Claude self-attested Python standards compliance.**
 
-What happened: the readiness checklist claimed the implementation followed `/python-standards` without a deterministic result or isolated audit verdict.
+What happened: the readiness checklist claimed the implementation followed `/python-code-standards` without a deterministic result or isolated audit verdict.
 
 Why it failed: a subjective checkbox let the authoring context grade its own conformance.
 
@@ -326,7 +326,7 @@ Implementation is ready for review when:
 - [ ] The product's resolved Python type-check command passes
 - [ ] The product's resolved Python lint/format check command passes
 - [ ] The `Audit requirements` report has one `preserved` row per audit routing row from `/verify`, or reports `none selected` when the routing result has none
-- [ ] The readiness report carries `Python standards audit: required` and names `/python-standards` plus every loaded Python overlay path; after the implementation audit, publication requires the returned projection's exact `terminalStatus` to be `approved`
+- [ ] The readiness report carries `Python standards audit: required` and names `/python-code-standards` plus every loaded Python overlay path; after the implementation audit, publication requires the returned projection's exact `terminalStatus` to be `approved`
 - [ ] FIX mode addresses every supplied reviewer finding with a code change or a stated evidence-based rejection
 
 </success_criteria>

@@ -1,5 +1,5 @@
 ---
-name: audit-python-tests
+name: audit-python-test
 description: >-
   Python test-evidence audit methodology — judges the Python tests in scope
   against the spec-tree and Python-specific evidence properties.
@@ -20,7 +20,7 @@ This audit is read-only. Produce a verdict over test evidence; never edit tests,
 
 <prerequisites>
 
-Use skill `python:python-standards`.
+Use skill `python:python-code-standards`.
 
 Use skill `python:python-test-standards`.
 

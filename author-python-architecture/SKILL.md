@@ -1,12 +1,12 @@
 ---
-name: architect-python
+name: author-python-architecture
 description: >-
   ALWAYS invoke this skill when writing ADRs for Python.
   NEVER author a Python ADR without this skill.
 allowed-tools: Read, Write, Glob, Grep, Skill
 ---
 
-Use skill `python:python-standards`.
+Use skill `python:python-code-standards`.
 
 Use skill `python:python-architecture-standards`.
 
@@ -21,7 +21,7 @@ Standards are pre-loaded by the `require_skill` directives above. `/python-archi
 
 - An ADR follows the authoritative template: title + decision stated directly, Rationale, Invariants (optional), Verification.
 - Testability constraints go under `## Verification`'s `### Audit` subsection as ALWAYS/NEVER rules — never in a separate Testing Strategy section.
-- Before writing any ADR, consult `/verify`, `/test-python`, and `/python-test-standards` for verification routing and Python-specific test standards.
+- Before writing any ADR, Use skill `spec-tree:verify` for verification routing and Use skill `python:author-python-test` for Python test authoring.
 
 </foundational_stance>
 
@@ -79,7 +79,7 @@ These principles guide every ADR. Each links to the reference carrying the full 
 - **Type safety first** — modern syntax (`X | None`, `list[str]`), no unjustified `Any`, protocols for structural typing, Pydantic at boundaries. See `${CLAUDE_SKILL_DIR}/references/type-system-patterns.md`.
 - **Clean architecture** — DDD entities/value objects/aggregates, dependency injection through parameters not globals, single responsibility, no circular imports. See `${CLAUDE_SKILL_DIR}/references/architecture-patterns.md`.
 - **Security by design** — validate at boundaries, no hardcoded secrets, array-arg subprocess (never `shell=True`), context-aware threat modeling. See `${CLAUDE_SKILL_DIR}/references/security-patterns.md`.
-- **Testability by design** — design for dependency injection (no mocking), prefer pure functions and observable boundaries, and establish constraints that let `/test` select the minimum execution level that gives confidence. ADRs never assign execution levels. See `${CLAUDE_SKILL_DIR}/references/testability-patterns.md`, `/python-test-standards`, and `/test-python`.
+- **Testability by design** — design for dependency injection (no mocking), prefer pure functions and observable boundaries, and establish constraints that let `spec-tree:test` select the minimum execution level that gives confidence. ADRs never assign execution levels. See `${CLAUDE_SKILL_DIR}/references/testability-patterns.md`.
 
 </architectural_principles>
 

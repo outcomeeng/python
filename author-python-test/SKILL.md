@@ -1,12 +1,12 @@
 ---
-name: test-python
+name: author-python-test
 description: >-
   ALWAYS invoke this skill when writing or fixing tests for Python.
   NEVER write or fix Python tests without this skill.
 allowed-tools: Read, Write, Edit, Glob, Grep, Skill, Bash(python3 -m pytest:*), Bash(python3 -m ruff check:*), Bash(python3 -m mypy:*)
 ---
 
-Use skill `python:python-standards`.
+Use skill `python:python-code-standards`.
 
 Use skill `python:python-test-standards`.
 
@@ -19,11 +19,11 @@ Python test files that supply evidence for a spec-tree node's assertions.
 <mode_detection>
 Determine the mode before editing:
 
-| Mode  | Signal                                                  | Action                       |
-| ----- | ------------------------------------------------------- | ---------------------------- |
-| Write | The node has no Python evidence file for the assertion  | Follow `<write_workflow>`    |
-| Fix   | `/audit-python-tests` rejected existing Python evidence | Follow `<fix_workflow>`      |
-| Split | The test requires source architecture changes first     | Change source contract first |
+| Mode  | Signal                                                 | Action                       |
+| ----- | ------------------------------------------------------ | ---------------------------- |
+| Write | The node has no Python evidence file for the assertion | Follow `<write_workflow>`    |
+| Fix   | `/audit-python-test` rejected existing Python evidence | Follow `<fix_workflow>`      |
+| Split | The test requires source architecture changes first    | Change source contract first |
 
 NEVER create a test workaround for code that lacks source-owned contracts, typed dependency boundaries, or observable behavior.
 </mode_detection>
